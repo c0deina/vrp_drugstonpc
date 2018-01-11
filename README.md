@@ -3,6 +3,8 @@ Original creator: https://github.com/onlyserenity/drugsToNPCs
 
 Tested with dRP a.k.a Dunko's vRP
 
+Key to sell is "H", you can change on line 44 the (1, 74) to whatever control you want.
+
 In order for this to actually work on your server you'll need to change the item names, I was testing with tacos so I have tacos.
 Change "tacos" to whatever your joint name is, remember to keep it between "".
 ```
