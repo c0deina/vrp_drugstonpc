@@ -126,8 +126,6 @@ while true do
     end
     if rejected then
       drawTxt(0.90, 1.40, 1.0,1.0,0.4, "Person ~r~rejected ~w~your offer ~r~", 255, 255, 255, 255)
-      tvRP.applyWantedLevel(2)
-      Citizen.Wait(15000)
     end
   end
   end)
