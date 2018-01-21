@@ -61,6 +61,11 @@ while true do
                       selling = false
                       SetEntityAsMissionEntity(ped)
                       SetPedAsNoLongerNeeded(ped)
+                      local randomReport = math.random(1, 5)
+						if randomReport == 3 then
+						  local plyPos = GetEntityCoords(GetPlayerPed(-1))
+						  TriggerServerEvent('vRP_drugNPC:policia',plyPos.x, plyPos.y, plyPos.z)
+						end
                     elseif random ~= 3 or random ~= 7 or random ~= 11 or random ~= 5 then
                       TaskStandStill(ped, 9.0)
                       pos1 = GetEntityCoords(ped)
