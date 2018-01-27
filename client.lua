@@ -2,6 +2,19 @@
 --= Drug Script- Onlyserenity				 	=
 --===============================================
 
+local blah = false
+  Citizen.CreateThread(function()
+
+  while true do
+    Wait(0)
+    if blah then
+      TriggerServerEvent('drugs:money')
+      blah = false
+      selling = false
+    end
+  end
+  end)
+
 local selling = false
 local secondsRemaining = 0
 local rejected = false
@@ -46,8 +59,8 @@ while true do
                   if has then
                     oldped = ped
                     SetEntityAsMissionEntity(ped)
-                    ClearPedTasks(ped)
-                    FreezeEntityPosition(ped,true)
+                    -- ClearPedTasks(ped)
+                    -- FreezeEntityPosition(ped,true)
                     local random = math.random(1, 12)
                     if random == 3 or random == 7 or random == 11 or random == 5 then
                       exports.pNotify:SetQueueMax("left", 1)
@@ -69,8 +82,9 @@ while true do
                     elseif random ~= 3 or random ~= 7 or random ~= 11 or random ~= 5 then
                       TaskStandStill(ped, 9.0)
                       pos1 = GetEntityCoords(ped)
-                      TriggerEvent("currentlySelling")
-					  TriggerServerEvent('drugs:item')
+                      TriggerServerEvent('drugs:check')
+                      --TriggerEvent("currentlySelling")
+					  -- TriggerServerEvent('drugs:item')
                     end
                   end
                 end
@@ -126,26 +140,15 @@ while true do
     end
     if rejected then
       drawTxt(0.90, 1.40, 1.0,1.0,0.4, "Person ~r~rejected ~w~your offer ~r~", 255, 255, 255, 255)
+      tvRP.applyWantedLevel(2)
+      Citizen.Wait(15000)
     end
   end
   end)
-
-  Citizen.CreateThread(function()
-
-  while true do
-    Wait(0)
-    if blah then
-      TriggerServerEvent('drugs:money')
-      blah = false
-      selling = false
-    end
-  end
-  end)
-
-
 
   RegisterNetEvent('currentlySelling')
   AddEventHandler('currentlySelling', function()
+  TriggerServerEvent('drugs:item')
   selling = true
   secondsRemaining = 10
   end)
