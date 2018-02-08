@@ -2,29 +2,7 @@ local Proxy = module("vrp", "lib/Proxy")
 local Tunnel = module("vrp", "lib/Tunnel")
 
 vRP = Proxy.getInterface("vRP")
-vRPclient = Tunnel.getInterface("vRP","vrp_drugstonpc")
-
-
-RegisterServerEvent('drugs:check')
-AddEventHandler('drugs:check', function()
-    local user_id = vRP.getUserId({source})
-    local player = vRP.getUserSource({user_id})
-    local cops = vRP.getUsersByGroup({"cop"})
-    if vRP.hasGroup({user_id,"cop"}) then
-	    vRPclient.notify(player,{"~r~Cops can't sell drugs."})
-	    TriggerClientEvent('done', player)
-	    TriggerClientEvent('cancel', player)
-    else
-    if #cops >= 1 then
-	    TriggerClientEvent("currentlySelling")
-    else
-        vRPclient.notify(player,{"~r~Not enough cops online."})
-        TriggerClientEvent('done', player)
-        TriggerClientEvent('cancel', player)
-    end
-  end
-end)
-
+vRPclient = Tunnel.getInterface("vRP","vrp_kekmememememes")
 
 RegisterServerEvent('drugs:item')
 AddEventHandler('drugs:item', function()
